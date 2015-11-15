@@ -1,12 +1,12 @@
 {
-  "name": "Terrorist to Coward",
-  "version": "0.1.1",
+  "name": "Indianism",
+  "version": "1.0",
   "manifest_version": 2,
-  "description": "Terrorists aspire to that title but they don't deserve it. This is how we take it away from them.",
+  "description": "Our religion comes after our nation. Time to remind ourselves of that.",
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["contentscript.js"],
+      "js": ["jquery.min.js", "contentscript.js"],
       "run_at":     "document_start",
       "all_frames": true
     }
