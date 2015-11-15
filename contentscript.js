@@ -1,20 +1,35 @@
 var REPLACEMENTS = {
-    'terrorist': 'coward',
-    'Terrorist': 'Coward',
-    'terrorism': 'cowardice',
-    'Terrorism': 'Cowardice'
-    'terrorista': 'covarde',
-    'Terrorista': 'Covarde',
-    'terrorismo': 'covardia',
-    'Terrorismo': 'Covardia'
+    'Hindu': 'Indian',
+    'Muslim': 'Indian',
+    'Sikh': 'Indian',
+    'Christian': 'Indian',
+    'Buddhist': 'Indian',
+    'Jain': 'Indian',
+    'hindu': 'indian',
+    'muslim': 'indian',
+    'sikh': 'indian',
+    'christian': 'indian',
+    'buddhist': 'indian',
+    'jain': 'indian',
+    'Hindus': 'Indians',
+    'Muslims': 'Indians',
+    'Sikhs': 'Indians',
+    'Christians': 'Indians',
+    'Buddhists': 'Indians',
+    'Jains': 'Indians',
+    'hindus': 'indians',
+    'muslims': 'indians',
+    'sikhs': 'indians',
+    'christians': 'indians',
+    'buddhists': 'indians',
+    'jains': 'indians'
 };
 
-var replaceTerror = function(textNode) {
+var replaceReligion = function(textNode) {
     var text = textNode.data;
-    for(var before in REPLACEMENTS){
-        if(REPLACEMENTS.hasOwnProperty(before))
-            text = text.replace(new RegExp(before, "g"), REPLACEMENTS[before]);
-    }
+    $.each(REPLACEMENTS, function (before, after) {
+        text = text.replace(new RegExp(before, "g"), after);
+    });
     textNode.data = text;
 };
 
@@ -24,7 +39,7 @@ var observer = new MutationObserver(function(mutations) {
         if (mutation.addedNodes) {
             [].slice.call(mutation.addedNodes).forEach(function(node) {
                 if (node.nodeName.toLowerCase() == "#text") {
-                    replaceTerror(node);
+                    replaceReligion(node);
                 }
             });
         }
